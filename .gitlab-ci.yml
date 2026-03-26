@@ -25,3 +25,31 @@ deploy:
   needs:
     - build
     - test
+
+# State test jobs — triggered manually
+success:
+  stage: test
+  script:
+    - echo "This job succeeds"
+  when: manual
+
+failure:
+  stage: test
+  script:
+    - echo "About to fail..." && exit 1
+  when: manual
+
+slow:
+  stage: test
+  script:
+    - echo "Running for a while..." && sleep 120
+  when: manual
+  timeout: 2m
+
+skipped:
+  stage: deploy
+  script:
+    - echo "This is skipped because failure failed"
+  needs:
+    - job: failure
+  when: manual

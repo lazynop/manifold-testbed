@@ -16,3 +16,18 @@ pipelines:
         name: Deploy
         script:
           - echo "Deploying..." && sleep 4
+
+  custom:
+    states:
+      - step:
+          name: Success
+          script:
+            - echo "This job succeeds"
+      - step:
+          name: Failure
+          script:
+            - echo "About to fail..." && exit 1
+      - step:
+          name: Slow
+          script:
+            - echo "Running for a while..." && sleep 120
