@@ -1,0 +1,27 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - echo "Building..." && sleep 5
+
+test:
+  stage: test
+  script:
+    - echo "Testing..." && sleep 3
+
+lint:
+  stage: test
+  script:
+    - echo "Linting..." && sleep 2
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying..." && sleep 4
+  needs:
+    - build
+    - test

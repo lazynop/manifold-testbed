@@ -1,0 +1,18 @@
+pipelines:
+  default:
+    - step:
+        name: Build
+        script:
+          - echo "Building..." && sleep 5
+    - step:
+        name: Test
+        script:
+          - echo "Testing..." && sleep 3
+    - step:
+        name: Lint
+        script:
+          - echo "Linting..." && sleep 2
+    - step:
+        name: Deploy
+        script:
+          - echo "Deploying..." && sleep 4
